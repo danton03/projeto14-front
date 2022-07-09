@@ -50,6 +50,12 @@ const GlobalStyle = createGlobalStyle`
   /* Estilos Personalizados */
   *{
     font-family: 'Raleway', sans-serif;
+    --cor-cinza: #F5F5F5;
+    --cor-preta: #000000;
+    --cor-branca: #FFFFFF;
+    --cor-verde-escuro: #162F31;
+    --cor-azul: #55B4DC;
+    --cor-azul-claro: #EEF8FC;
   }
   
   body{
