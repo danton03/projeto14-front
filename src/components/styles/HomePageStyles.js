@@ -9,9 +9,10 @@ const HomePageStyle = createGlobalStyle`
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 25px;
   row-gap: 25px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   height: auto;
   margin: 52px 0;
@@ -117,17 +118,17 @@ const ProductCard = styled.div`
   flex-direction: column;
   row-gap: 12px;
   width: 137px;
-  height: 154px;
+  height: auto;
   padding: 7px;
   border-radius: 5px;
   background-color: var(--cor-branca);
   box-sizing: border-box;
-  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.1));
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 
   img{
     width: 123px;
-    height: 72px;
-    border-radius: 4px;
+    height: 81px;
+    /* border-radius: 4px; */
   }
 
   .titulo{
@@ -140,10 +141,10 @@ const ProductCard = styled.div`
     h3{
       width: 100%;
       height: auto;
-      max-height: 29px;
-      font-weight: 600;
+      max-height: 38px;
+      font-weight: 700;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 1.2;
       text-align: center;
       overflow: hidden;
       text-overflow: clip;
@@ -158,9 +159,9 @@ const ProductCard = styled.div`
     justify-content: center;
     width: 100%;
     height: auto;
+    margin-bottom: 4px;
     font-weight: 500;
     font-size: 10px;
-    line-height: 12px;
     text-align: center;
     color: var(--cor-azul);
   }
