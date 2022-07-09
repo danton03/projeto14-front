@@ -1,7 +1,9 @@
 import { Container, Header, HomePageStyle, Menu, ProductCard } from "./styles/HomePageStyles";
 import logo from "../assets/images/logo.svg";
+import home from "../assets/images/home.svg";
 import homeAzul from "../assets/images/home-azul.svg";
 import cart from "../assets/images/cart.svg";
+import cartAzul from "../assets/images/cart-azul.svg";
 import logout from "../assets/images/log-out.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";

@@ -4,20 +4,23 @@ import HomePage from "./components/HomePage";
 import SingUp from "./logIn_SingUp/SingUp";
 import Entrega from "./checkout/Entrega";
 import Pagamento from "./checkout/Pagamento";
+import UserContext from "./contexts/UserContext";
+import { useState } from "react";
 
 function App() {
+  const [user , setUser] = useState({});
   return (
-    <div className="App">
+    <UserContext.Provider value={{user, setUser}} >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
-          <Route path="login" element={<LogIn/>} />
-          <Route path="singup" element={<SingUp/>} />
-          <Route path="entrega" element={<Entrega/>} />
-          <Route path="pagamento" element={<Pagamento/>} />
+          <Route path="/login" element={<LogIn/>} />
+          <Route path="/singup" element={<SingUp/>} />
+          <Route path="/entrega" element={<Entrega/>} />
+          <Route path="/pagamento" element={<Pagamento/>} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </UserContext.Provider>
   );
 }
 
