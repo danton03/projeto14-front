@@ -1,12 +1,8 @@
-import { Container, Header, HomePageStyle, Menu, ProductCard } from "./styles/HomePageStyles";
+import { Container, Header, HomePageStyle, ProductCard } from "./styles/HomePageStyles";
 import logo from "../assets/images/logo.svg";
-import home from "../assets/images/home.svg";
-import homeAzul from "../assets/images/home-azul.svg";
-import cart from "../assets/images/cart.svg";
-import cartAzul from "../assets/images/cart-azul.svg";
-import logout from "../assets/images/log-out.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Menu from "./Menu";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -47,19 +43,7 @@ export default function HomePage() {
       <Container>
         {products.length > 0 ? renderizaProdutos() : 'carregando...'}
       </Container>
-      <Menu>
-        <div className="icones">
-          <div className="icone paginaAtual">
-            <img src={homeAzul} alt="ícone home" />
-          </div>
-          <div className="icone">
-            <img src={cart} alt="ícone carrinho" />
-          </div>
-          <div className="icone">
-            <img src={logout} alt="ícone logout/login" />
-          </div>
-        </div>
-      </Menu>
+      <Menu />
     </>
   );
 }

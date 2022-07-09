@@ -72,7 +72,7 @@ const Header = styled.header`
   }
 `;
 
-const Menu = styled.div`
+const NavBar = styled.div`
   position: fixed;
   bottom: 0;
   right: 0;
@@ -101,7 +101,9 @@ const Menu = styled.div`
 
   .icone{
     justify-content: center;
-    border-radius: 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
   }
 
   .icone:hover{
@@ -167,4 +169,4 @@ const ProductCard = styled.div`
   }
 `;
 
-export {Container, HomePageStyle, Header, Menu, ProductCard}
+export {Container, HomePageStyle, Header, NavBar, ProductCard}

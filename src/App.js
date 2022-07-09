@@ -6,20 +6,26 @@ import Entrega from "./checkout/Entrega";
 import Pagamento from "./checkout/Pagamento";
 import UserContext from "./contexts/UserContext";
 import { useState } from "react";
+import MenuContext from "./contexts/MenuContext";
+import CartPage from "./components/CartPage";
 
 function App() {
   const [user , setUser] = useState({});
+  const [homePage , setHomePage] = useState(true);
   return (
     <UserContext.Provider value={{user, setUser}} >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path="/login" element={<LogIn/>} />
-          <Route path="/singup" element={<SingUp/>} />
-          <Route path="/entrega" element={<Entrega/>} />
-          <Route path="/pagamento" element={<Pagamento/>} />
-        </Routes>
-      </BrowserRouter>
+      <MenuContext.Provider value={{homePage , setHomePage}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/login" element={<LogIn/>} />
+            <Route path="/singup" element={<SingUp/>} />
+            <Route path="/carrinho" element={<CartPage/>} />
+            <Route path="/entrega" element={<Entrega/>} />
+            <Route path="/pagamento" element={<Pagamento/>} />
+          </Routes>
+        </BrowserRouter>
+      </MenuContext.Provider>
     </UserContext.Provider>
   );
 }
