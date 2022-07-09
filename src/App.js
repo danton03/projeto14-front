@@ -11,7 +11,7 @@ import CartPage from "./components/CartPage";
 
 function App() {
   const [user , setUser] = useState({});
-  const [homePage , setHomePage] = useState(true);
+  const [homePage , setHomePage] = useState('');
   return (
     <UserContext.Provider value={{user, setUser}} >
       <MenuContext.Provider value={{homePage , setHomePage}}>
