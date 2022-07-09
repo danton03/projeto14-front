@@ -1,4 +1,4 @@
-import { NavBar } from "./styles/HomePageStyles";
+import { NavBar } from "./styles/MenuStyles";
 import home from "../assets/images/home.svg";
 import homeAzul from "../assets/images/home-azul.svg";
 import cart from "../assets/images/cart.svg";

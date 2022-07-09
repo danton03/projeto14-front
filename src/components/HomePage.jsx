@@ -1,9 +1,9 @@
-import { Container, Header, HomePageStyle, ProductCard } from "./styles/HomePageStyles";
-import logo from "../assets/images/logo.svg";
+import { Container, HomePageStyle, ProductCard } from "./styles/HomePageStyles";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Menu from "./Menu";
 import MenuContext from "../contexts/MenuContext";
+import Header from "./Header";
 
 export default function HomePage() {
   const { setHomePage } = useContext(MenuContext);
@@ -38,13 +38,7 @@ export default function HomePage() {
   return(
     <>
       <HomePageStyle />
-      <Header>
-        <div className="logo">
-          <img src={logo} alt="logo da loja" />
-          <h1>Sport Center</h1>
-        </div>
-        <button type="button">Fulano</button>
-      </Header>
+      <Header />
       <Container>
         {products.length > 0 ? renderizaProdutos() : 'carregando...'}
       </Container>
