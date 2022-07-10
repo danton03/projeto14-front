@@ -1,12 +1,15 @@
 import FormsLogInSingUp from "./FormsLogInSingUp"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../contexts/UserContext.js";
 
 export default function LogIn(){
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const { user , setUser } = useContext(UserContext);
 
     let navigate = useNavigate()
 
@@ -16,8 +19,13 @@ export default function LogIn(){
         console.log(body)
         try {
          const request = await axios.post('http://localhost:5000/login', body);
+         
+         const token = request.data
+         
+         setUser(token)
+       
           
-             navigate("/compra")
+              navigate("/entrega")
 
         } catch (error) {
           alert(error.response.data);

@@ -8,23 +8,27 @@ import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import MenuContext from "./contexts/MenuContext";
 import CartPage from "./components/CartPage";
+import SendContext from "./contexts/SendContext";
 
 function App() {
   const [user , setUser] = useState({});
   const [homePage , setHomePage] = useState(true);
+  const [dataSend, setDataSend] = useState({})
   return (
-    <UserContext.Provider value={{user, setUser}} >
+    <UserContext.Provider value={{user , setUser}} >
       <MenuContext.Provider value={{homePage , setHomePage}}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage/>} />
-            <Route path="/login" element={<LogIn/>} />
-            <Route path="/singup" element={<SingUp/>} />
-            <Route path="/carrinho" element={<CartPage/>} />
-            <Route path="/entrega" element={<Entrega/>} />
-            <Route path="/pagamento" element={<Pagamento/>} />
-          </Routes>
-        </BrowserRouter>
+        <SendContext.Provider value={{dataSend, setDataSend}}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<HomePage/>} />
+              <Route path="/login" element={<LogIn/>} />
+              <Route path="/singup" element={<SingUp/>} />
+              <Route path="/carrinho" element={<CartPage/>} />
+              <Route path="/entrega" element={<Entrega/>} />
+              <Route path="/pagamento" element={<Pagamento/>} />
+            </Routes>
+          </BrowserRouter>
+       </SendContext.Provider>
       </MenuContext.Provider>
     </UserContext.Provider>
   );
