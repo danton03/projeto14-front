@@ -1,12 +1,16 @@
-import { Container, Header, HomePageStyle, ProductCard } from "./styles/HomePageStyles";
-import logo from "../assets/images/logo.svg";
-import { useEffect, useState } from "react";
+import { Container, HomePageStyle, ProductCard } from "./styles/HomePageStyles";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Menu from "./Menu";
+import MenuContext from "../contexts/MenuContext";
+import Header from "./Header";
 
 export default function HomePage() {
+  const { setHomePage } = useContext(MenuContext);
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
+    setHomePage('home');
     const promise = axios.get("http://localhost:5000/products");
     promise.then((res) => {
       setProducts(res.data);
@@ -14,6 +18,7 @@ export default function HomePage() {
     promise.catch((err)=>{
       console.log(err);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   function renderizaProdutos() {
@@ -33,13 +38,7 @@ export default function HomePage() {
   return(
     <>
       <HomePageStyle />
-      <Header>
-        <div className="logo">
-          <img src={logo} alt="logo da loja" />
-          <h1>Sport Center</h1>
-        </div>
-        <button type="button">Fulano</button>
-      </Header>
+      <Header />
       <Container>
         {products.length > 0 ? renderizaProdutos() : 'carregando...'}
       </Container>

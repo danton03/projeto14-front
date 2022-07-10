@@ -11,8 +11,8 @@ import CartPage from "./components/CartPage";
 import SendContext from "./contexts/SendContext";
 
 function App() {
+  const [homePage , setHomePage] = useState('');
   const [user , setUser] = useState({});
-  const [homePage , setHomePage] = useState(true);
   const [dataSend, setDataSend] = useState({})
   return (
     <UserContext.Provider value={{user , setUser}} >
