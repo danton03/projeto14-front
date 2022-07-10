@@ -7,6 +7,7 @@ import SendContext from "../contexts/SendContext"
 import axios from 'axios';
 import UserContext from "../contexts/UserContext"
 import styled, { createGlobalStyle } from 'styled-components';
+import Header from '../components/Header';
  
 export default function Pagamento() {
 
@@ -49,10 +50,12 @@ let Valortotal = ValorFrete+ValorProduto
   console.log(dataSend)
 
     return (
+
+      <>
+      <Header/>
+
       <Container>
-
-        
-
+  
       <ResumoCompra>
 
         <h2> Resumo da compra</h2>
@@ -93,6 +96,7 @@ let Valortotal = ValorFrete+ValorProduto
       </StyledForm>
             
       </Container>
+      </>
           
     )}
     
@@ -151,6 +155,7 @@ const ResumoCompra = styled.div`
 
 
 margin-bottom: 30px;
+margin-top: 60px;
 
 .flexvalor{
 display: flex;

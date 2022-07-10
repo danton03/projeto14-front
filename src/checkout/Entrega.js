@@ -4,6 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import SendContext from "../contexts/SendContext"
 import UserContext from "../contexts/UserContext"
+import Header from "../components/Header"
 import styled, { createGlobalStyle } from 'styled-components';
 
 
@@ -61,6 +62,8 @@ export default function Entrega(){
 
     return(
         <>
+            <Header/>
+
         <StyledEndereco onSubmit={topayment}>
       
         <h2>Cadastrar endereço de entrega</h2>
