@@ -35,8 +35,7 @@ const ProductCard = styled.div`
 
   img{
     width: 123px;
-    height: 81px;
-    /* border-radius: 4px; */
+    height: 100px;
   }
 
   .titulo{

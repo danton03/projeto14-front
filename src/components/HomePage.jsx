@@ -4,10 +4,12 @@ import axios from "axios";
 import Menu from "./Menu";
 import MenuContext from "../contexts/MenuContext";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const { setHomePage } = useContext(MenuContext);
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   
   useEffect(() => {
     setHomePage('home');
@@ -24,7 +26,7 @@ export default function HomePage() {
   function renderizaProdutos() {
     return products.map((product)=>{
       return(
-        <ProductCard key={product._id}>
+        <ProductCard key={product._id} onClick={() => navigate(`/produto/${product._id}`)}>
           <img src={product.image} alt={product.name} />
           <div className="titulo">
             <h3>{product.name}</h3>

@@ -8,6 +8,7 @@ import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import MenuContext from "./contexts/MenuContext";
 import CartPage from "./components/CartPage";
+import ProductPage from "./components/ProductPage";
 
 function App() {
   const [user , setUser] = useState({});
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage/>} />
             <Route path="/login" element={<LogIn/>} />
             <Route path="/singup" element={<SingUp/>} />
+            <Route path="/produto/:productId" element={<ProductPage/>} />
             <Route path="/carrinho" element={<CartPage/>} />
             <Route path="/entrega" element={<Entrega/>} />
             <Route path="/pagamento" element={<Pagamento/>} />
