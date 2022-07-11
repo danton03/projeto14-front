@@ -25,7 +25,6 @@ export default function Pagamento() {
 
   setTimeout(()=>{if(!user){
     navigate("/")}
-  pagina_do_carrinho
   },200)
 
 
