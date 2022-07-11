@@ -15,7 +15,7 @@ export default function CartProduct(props){
   }
 
   function excluir() {
-    const promise = axios.delete(`http://localhost:5000/cart/${product._id}`, config);
+    const promise = axios.delete(`https://projeto14-sportcenter-back.herokuapp.com/cart/${product._id}`, config);
     promise.then((res) => {
       console.log(res.data);
       setCart(res.data); 
