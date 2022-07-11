@@ -40,7 +40,7 @@ export default function Menu() {
 
           {user ?
             <div className="icone">
-              <img src={logout} alt="ícone logout/login" />
+              <img src={logout} alt="ícone logout" />
             </div>
            : ''
           }
@@ -61,7 +61,7 @@ export default function Menu() {
 
           {user ?
             <div className="icone">
-              <img src={logout} alt="ícone logout/login" />
+              <img src={logout} alt="ícone logout" />
             </div>
            : ''
           }

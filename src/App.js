@@ -11,6 +11,8 @@ import CartPage from "./components/CartPage";
 import ProductPage from "./components/ProductPage";
 import SendContext from "./contexts/SendContext";
 import CompletedPurchase from "./checkout/CompletedPurchase";
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [homePage , setHomePage] = useState('');
@@ -33,6 +35,7 @@ function App() {
               <Route path="/pagamento" element={<Pagamento/>} />
               <Route path="/compraFeita" element={<CompletedPurchase/>} />
             </Routes>
+            <ToastContainer />
           </BrowserRouter>
        </SendContext.Provider>
       </MenuContext.Provider>

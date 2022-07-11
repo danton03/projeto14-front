@@ -5,16 +5,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import MenuContext from "../contexts/MenuContext";
 import Header from "./Header";
 import arrowImg from "../assets/images/arrow.svg";
+import UserContext from "../contexts/UserContext";
+import SizeButton from "./SizeButton";
+import { toast } from "react-toastify";
 
 export default function ProductPage() {
   const { productId } = useParams();
   const { setHomePage } = useContext(MenuContext);
+  const { user } = useContext(UserContext);
   const [product, setProduct] = useState();
   const [counter, setCounter] = useState(1);
+  const [clicked, setClicked] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    setHomePage('');
+    setHomePage(`/produto/${productId}`);
     const promise = axios.get(`http://localhost:5000/product/${productId}`);
     promise.then((res) => {
       setProduct(res.data);
@@ -56,6 +61,24 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
+          <div className="escolher-tamanho">
+            <h4>Escolha o tamanho</h4>
+            <div className="tamanho">
+              {product.size.map((tamanho, id) => {
+                  return(
+                    <SizeButton
+                      key={id} 
+                      type="button"
+                      clicked = {clicked}
+                      setClicked = {setClicked}
+                    >
+                      {tamanho}
+                    </SizeButton>
+                  )
+                }
+              )}
+            </div>
+          </div>
           <p>{product.description}</p>
         </div>
       </>
@@ -65,7 +88,6 @@ export default function ProductPage() {
   function renderizaPreco() {
     const productPrice = parseFloat(product.price);
     const totalPrice = String((productPrice*counter).toFixed(2)).replace('.',',');
-    console.log(totalPrice);
     return(
       <>
         <div className="total">
@@ -74,7 +96,7 @@ export default function ProductPage() {
             {`R$ ${totalPrice}`}
           </p>
         </div>
-        <button>Colocar no carrinho</button>
+        <button type="button" onClick={addToCart} >Colocar no carrinho</button>
       </>
     );
   }
@@ -87,6 +109,51 @@ export default function ProductPage() {
 
   function handleReturn() {
     navigate(-1);
+  }
+
+  function addToCart() {
+    if(!user){
+      navigate("/login");
+      toast.info('Faça o login para adicionar um produto ao carrinho.');
+    }
+
+    else if(clicked === ''){
+      toast.info('Selecione o tamanho do produto');
+    }
+
+    else{
+      //Falta criar a rota no back-end para adicionar ao carrinho. E adicionar a rota aqui
+      /* const promise = axios.post(`http://localhost:5000/`);
+      promise.then((res) => {
+        setProduct(res.data);
+      });
+      promise.catch((err)=>{
+        console.log(err);
+      }); 
+      
+      toast.promise(
+        promise,
+        {
+          pending: 'Carregando...',
+          success: 'Saída adicionada com sucesso!',
+          error: {
+            render({ data }) {
+              const code = data.response.status;
+              //Verificar se esses são os códigos corretos
+              if (code === 401 || code === 422) {
+                const message = data.response.data;
+                return message;
+              }
+              else {
+                return "Ops, tivemos uma falha interna";
+              }
+            }
+          }
+        }
+      );
+      */
+      navigate("/carrinho");
+    }
   }
 
   return(
