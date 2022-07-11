@@ -13,6 +13,7 @@ const CartPageStyle = createGlobalStyle`
 
 const Container = styled.div`
   margin-top: 52px;
+  margin-bottom: 76px;
   padding: 0 20px;
   box-sizing: border-box;
 
