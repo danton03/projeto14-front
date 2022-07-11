@@ -20,7 +20,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     setHomePage(`/produto/${productId}`);
-    const promise = axios.get(`https://projeto14-sportcenter-back.herokuapp.com/produto/${productId}`);
+    const promise = axios.get(`https://projeto14-sportcenter-back.herokuapp.com/product/${productId}`);
     promise.then((res) => {
       setProduct(res.data);
     });
