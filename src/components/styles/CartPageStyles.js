@@ -67,7 +67,7 @@ const Container = styled.div`
     display: flex;
     height: auto;
     width: 100%;
-    margin: 12px 0;
+    margin: 10px 0;
 
     font-weight: 700;
     font-size: 20px;
@@ -96,7 +96,7 @@ const Product = styled.div`
     margin-top: 4px;
 
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--cor-azul);
   }
@@ -126,7 +126,7 @@ const Product = styled.div`
       height: auto;
       max-height: 39px;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.3;
       overflow-y: hidden;
       text-overflow: clip;
@@ -141,7 +141,7 @@ const Product = styled.div`
       margin-top: 4px;
   
       font-family: 'Inter', sans-serif;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 500;
       color: #C6C6C6;
     }
@@ -172,7 +172,7 @@ const Product = styled.div`
       padding-left: 0;
 
       font-family: 'Inter', sans-serif;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 500;
       color: var(--cor-verde-escuro);
     }
