@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import SendContext from "../contexts/SendContext"
 import axios from 'axios';
 import UserContext from "../contexts/UserContext"
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Header from '../components/Header';
  
 
@@ -20,12 +20,14 @@ export default function Pagamento() {
   
   const navigate = useNavigate()
   
-  const { dataSend } = useContext(SendContext);
-  const { user , setUser } = useContext(UserContext);
+  const { dataSend, setDataPurchase} = useContext(SendContext);
+  const { user  } = useContext(UserContext);
 
   setTimeout(()=>{if(!user){
     navigate("/")}
+  pagina_do_carrinho
   },200)
+
 
   try{
 
@@ -35,13 +37,12 @@ export default function Pagamento() {
     let Valortotal = ValorFrete+ValorProduto
 
 
-
-
     async function pagar(e){
     e.preventDefault()
     
     const paymentData = {name, ncard, validate, securityCode}
     const body = {paymentData, dataSend}
+    setDataPurchase(body)
 
     const config = {
       headers: {
@@ -51,8 +52,8 @@ export default function Pagamento() {
 
     try {
 
-      console.log(body)
       const request = await axios.post('http://localhost:5000/DatasCompra', body, config);
+      navigate("/compraFeita")
 
     } catch (error) {
        alert(error.response.data);
@@ -61,7 +62,7 @@ export default function Pagamento() {
 
   }
 
-  console.log(dataSend)
+ 
 
     return (
 
