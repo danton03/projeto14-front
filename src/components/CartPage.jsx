@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import MenuContext from "../contexts/MenuContext";
 import Header from "./Header"
 import { CartPageStyle, Container, PriceBar } from "./styles/CartPageStyles";
@@ -59,7 +59,7 @@ export default function CartPage() {
     );
   }
 
-  function renderizaPriceBar(params) {
+  function renderizaPriceBar() {
     let valorTotal = 0;
     cart.map((produto) => {
       valorTotal = valorTotal + (parseFloat(produto.price));
