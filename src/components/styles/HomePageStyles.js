@@ -51,7 +51,7 @@ const ProductCard = styled.div`
       max-height: 29px;
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.2;
       text-align: center;
       overflow: hidden;
@@ -70,7 +70,7 @@ const ProductCard = styled.div`
     margin-bottom: 4px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     color: var(--cor-azul);
   }

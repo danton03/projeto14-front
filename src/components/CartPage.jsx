@@ -61,9 +61,9 @@ export default function CartPage() {
 
   function renderizaPriceBar() {
     let valorTotal = 0;
-    cart.map((produto) => {
-      valorTotal = valorTotal + (parseFloat(produto.price));
-    })
+    cart.map((produto) => 
+      valorTotal = valorTotal + (parseFloat(produto.price))
+    )
     setTotal(valorTotal);
     return(
       <PriceBar>

@@ -22,6 +22,7 @@ const Container = styled.div`
   margin-top: 52px;
   margin-bottom: 76px;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
   background-color: var(--cor-branca);
 
   .container-img{

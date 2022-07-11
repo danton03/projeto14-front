@@ -16,6 +16,7 @@ const Container = styled.div`
   margin-bottom: 76px;
   padding: 0 20px;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 
   &, .produtos{
     display: flex;
@@ -33,6 +34,7 @@ const Container = styled.div`
     height: auto;
     margin-top: 18px;
     margin-bottom: 8px;
+    font-family: 'Raleway', sans-serif;
 
     .seta{
       width: 18px;
@@ -75,6 +77,7 @@ const Container = styled.div`
 `;
 
 const Product = styled.div`
+  font-family: 'Raleway', sans-serif;
   position: relative;
   display: flex;
   align-items: center;

@@ -40,6 +40,7 @@ const Topo = styled.header`
     padding: 0;
     background: none;
     border: none;
+    font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 18px;
     line-height: 21px;
