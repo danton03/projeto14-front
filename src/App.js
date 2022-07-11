@@ -10,11 +10,13 @@ import MenuContext from "./contexts/MenuContext";
 import CartPage from "./components/CartPage";
 import ProductPage from "./components/ProductPage";
 import SendContext from "./contexts/SendContext";
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [homePage , setHomePage] = useState('');
   const [user , setUser] = useState();
-  const [dataSend, setDataSend] = useState({})
+  const [dataSend, setDataSend] = useState({});
   return (
     <UserContext.Provider value={{user , setUser}} >
       <MenuContext.Provider value={{homePage , setHomePage}}>
@@ -29,6 +31,7 @@ function App() {
               <Route path="/entrega" element={<Entrega/>} />
               <Route path="/pagamento" element={<Pagamento/>} />
             </Routes>
+            <ToastContainer />
           </BrowserRouter>
        </SendContext.Provider>
       </MenuContext.Provider>

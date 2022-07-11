@@ -7,6 +7,7 @@ import Header from "./Header";
 import arrowImg from "../assets/images/arrow.svg";
 import UserContext from "../contexts/UserContext";
 import SizeButton from "./SizeButton";
+import { toast } from "react-toastify";
 
 export default function ProductPage() {
   const { productId } = useParams();
@@ -18,7 +19,7 @@ export default function ProductPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setHomePage('');
+    setHomePage(`/produto/${productId}`);
     const promise = axios.get(`http://localhost:5000/product/${productId}`);
     promise.then((res) => {
       setProduct(res.data);
@@ -112,10 +113,45 @@ export default function ProductPage() {
 
   function addToCart() {
     if(!user){
-      setHomePage(`/produto/${productId}`);
       navigate("/login");
+      toast.info('Faça o login para adicionar um produto ao carrinho.');
     }
+
+    else if(clicked === ''){
+      toast.info('Selecione o tamanho do produto');
+    }
+
     else{
+      //Falta criar a rota no back-end para adicionar ao carrinho. E adicionar a rota aqui
+      /* const promise = axios.post(`http://localhost:5000/`);
+      promise.then((res) => {
+        setProduct(res.data);
+      });
+      promise.catch((err)=>{
+        console.log(err);
+      }); 
+      
+      toast.promise(
+        promise,
+        {
+          pending: 'Carregando...',
+          success: 'Saída adicionada com sucesso!',
+          error: {
+            render({ data }) {
+              const code = data.response.status;
+              //Verificar se esses são os códigos corretos
+              if (code === 401 || code === 422) {
+                const message = data.response.data;
+                return message;
+              }
+              else {
+                return "Ops, tivemos uma falha interna";
+              }
+            }
+          }
+        }
+      );
+      */
       navigate("/carrinho");
     }
   }
