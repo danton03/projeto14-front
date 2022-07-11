@@ -48,7 +48,8 @@ const ProductCard = styled.div`
     h3{
       width: 100%;
       height: auto;
-      max-height: 38px;
+      max-height: 29px;
+      font-family: 'Raleway', sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 1.2;
@@ -67,6 +68,7 @@ const ProductCard = styled.div`
     width: 100%;
     height: auto;
     margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 10px;
     text-align: center;
