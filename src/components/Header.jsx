@@ -19,7 +19,7 @@ export default function Header() {
             <img src={logo} alt="logo da loja" />
             <h1>Sport Center</h1>
           </div>
-        {user.length ?
+        {user ?
           <button 
             type="button"
             disabled 

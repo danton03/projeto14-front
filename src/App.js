@@ -13,7 +13,7 @@ import SendContext from "./contexts/SendContext";
 
 function App() {
   const [homePage , setHomePage] = useState('');
-  const [user , setUser] = useState({});
+  const [user , setUser] = useState();
   const [dataSend, setDataSend] = useState({})
   return (
     <UserContext.Provider value={{user , setUser}} >
