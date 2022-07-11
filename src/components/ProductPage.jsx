@@ -149,7 +149,7 @@ export default function ProductPage() {
         promise,
         {
           pending: 'Carregando...',
-          success: 'Saída adicionada com sucesso!',
+          success: 'Adicionado ao carrinho',
           error: {
             render({ data }) {
               const code = data.response.status;

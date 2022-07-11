@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 export default function CartPage() {
   const navigate = useNavigate();
   const { setHomePage } = useContext(MenuContext);
-  const { user, cart, setCart } = useContext(UserContext);
+  const { user, cart, setCart, total, setTotal } = useContext(UserContext);
   const config = {
     headers: {
       "Authorization": `Bearer ${user}` //Padrão da API (Bearer Authentication)
@@ -29,7 +29,6 @@ export default function CartPage() {
     setHomePage('/carrinho');
     const promise = axios.get(`https://projeto14-sportcenter-back.herokuapp.com/cart`, config);
     promise.then((res) => {
-      console.log(res.data);
       setCart(res.data); 
     });
     promise.catch((err)=>{
@@ -60,6 +59,23 @@ export default function CartPage() {
     );
   }
 
+  function renderizaPriceBar(params) {
+    let valorTotal = 0;
+    cart.map((produto) => {
+      valorTotal = valorTotal + (parseFloat(produto.price));
+    })
+    setTotal(valorTotal);
+    return(
+      <PriceBar>
+        <div className="total">
+          <h4>{"Total"}</h4>
+          <p>R$ {String(total.toFixed(2)).replace('.',',')}</p>
+        </div>
+        <button type="button" onClick={() => navigate("/entrega")}>Comprar</button>
+      </PriceBar>
+    );
+  }
+
   return(
     <>
       <CartPageStyle />
@@ -73,13 +89,7 @@ export default function CartPage() {
       </Container>
       
       {cart.length ? 
-        <PriceBar>
-          <div className="total">
-            <h4>{"Total (2 itens)"}</h4>
-            <p>R$ 300,00</p>
-          </div>
-          <button type="button" onClick={() => navigate("/entrega")}>Comprar</button>
-        </PriceBar>
+        renderizaPriceBar()
         : ''
       }
     </>
