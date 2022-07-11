@@ -9,6 +9,7 @@ import axios from 'axios';
 import UserContext from "../contexts/UserContext"
 import styled from 'styled-components';
 import Header from '../components/Header';
+
  
 
 export default function Pagamento() {
@@ -17,11 +18,13 @@ export default function Pagamento() {
   const [ncard, setNcard] = useState("")
   const [validate, setValidate] = useState("")
   const [securityCode, setSecurityCode] = useState("")
+
   
   const navigate = useNavigate()
   
   const { dataSend, setDataPurchase} = useContext(SendContext);
-  const { user  } = useContext(UserContext);
+  const { cart,total, user} = useContext(UserContext);
+  
 
   setTimeout(()=>{if(!user){
     navigate("/")}
@@ -33,14 +36,14 @@ export default function Pagamento() {
     let ValorProduto = 50
     let ValorFrete = parseFloat(dataSend.PrazosValores.valorEntregaNormal)
     let PrazoEntrega = parseFloat(dataSend.PrazosValores.prazoEntregaNormal)
-    let Valortotal = ValorFrete+ValorProduto
+    let Valortotal = total
 
 
     async function pagar(e){
     e.preventDefault()
     
     const paymentData = {name, ncard, validate, securityCode}
-    const body = {paymentData, dataSend}
+    const body = {paymentData, dataSend, cart}
     setDataPurchase(body)
 
     const config = {
