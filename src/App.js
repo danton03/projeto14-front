@@ -19,7 +19,7 @@ function App() {
   const [user , setUser] = useState();
   const [dataSend, setDataSend] = useState({});
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState([]);
+  const [total, setTotal] = useState(0);
   const [dataPurchase, setDataPurchase] = useState({})
   
   return (
