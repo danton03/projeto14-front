@@ -20,7 +20,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     setHomePage(`/produto/${productId}`);
-    const promise = axios.get(`http://localhost:5000/product/${productId}`);
+    const promise = axios.get(`https://projeto14-sportcenter-back.herokuapp.com/${productId}`);
     promise.then((res) => {
       setProduct(res.data);
     });
@@ -137,7 +137,7 @@ export default function ProductPage() {
         genre
       }
 
-      const promise = axios.post(`http://localhost:5000/cart`,body, config);
+      const promise = axios.post(`https://projeto14-sportcenter-back.herokuapp.com/cart`,body, config);
       promise.then((res) => {
         console.log(res.data);
       });

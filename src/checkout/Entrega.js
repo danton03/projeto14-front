@@ -45,7 +45,7 @@ export default function Entrega(){
         }
 
        try {
-        const request = await axios.post('http://localhost:5000/validaEndereco',body, config);
+        const request = await axios.post('https://projeto14-sportcenter-back.herokuapp.com/validaEndereco',body, config);
 
        const PrazosValores = request.data
         console.log(PrazosValores)

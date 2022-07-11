@@ -27,7 +27,7 @@ export default function CartPage() {
       }
     },200)
     setHomePage('/carrinho');
-    const promise = axios.get(`http://localhost:5000/cart`, config);
+    const promise = axios.get(`https://projeto14-sportcenter-back.herokuapp.com/cart`, config);
     promise.then((res) => {
       console.log(res.data);
       setCart(res.data); 

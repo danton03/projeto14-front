@@ -21,7 +21,7 @@ function logar(event) {
     const body = { email, password };
     console.log(body)
     
-      const request = axios.post('http://localhost:5000/login', body);
+      const request = axios.post('https://projeto14-sportcenter-back.herokuapp.com/login', body);
       request.then((res)=>{
         const token = res.data
   

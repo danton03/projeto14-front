@@ -54,7 +54,7 @@ export default function Pagamento() {
 
     try {
 
-      const request = await axios.post('http://localhost:5000/DatasCompra', body, config);
+      const request = await axios.post('https://projeto14-sportcenter-back.herokuapp.com/DatasCompra', body, config);
       navigate("/compraFeita")
 
     } catch (error) {

@@ -19,7 +19,7 @@ export default function SingUp(){
         const body = { name, email, password, cpf, confirmPassword: passwordConfirm};
         console.log(body)
         try {
-         await axios.post('http://localhost:5000/singup', body);
+         await axios.post('https://projeto14-sportcenter-back.herokuapp.com/singup', body);
 
          navigate("/login")
         } catch (error) {

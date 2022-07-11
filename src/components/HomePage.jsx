@@ -13,7 +13,7 @@ export default function HomePage() {
   
   useEffect(() => {
     setHomePage('/');
-    const promise = axios.get("http://localhost:5000/products");
+    const promise = axios.get("https://projeto14-sportcenter-back.herokuapp.com/products");
     promise.then((res) => {
       setProducts(res.data);
     });
