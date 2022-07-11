@@ -5,12 +5,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import MenuContext from "../contexts/MenuContext";
 import Header from "./Header";
 import arrowImg from "../assets/images/arrow.svg";
+import UserContext from "../contexts/UserContext";
+import SizeButton from "./SizeButton";
 
 export default function ProductPage() {
   const { productId } = useParams();
   const { setHomePage } = useContext(MenuContext);
+  const { user } = useContext(UserContext);
   const [product, setProduct] = useState();
   const [counter, setCounter] = useState(1);
+  const [clicked, setClicked] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +60,24 @@ export default function ProductPage() {
               </button>
             </div>
           </div>
+          <div className="escolher-tamanho">
+            <h4>Escolha o tamanho</h4>
+            <div className="tamanho">
+              {product.size.map((tamanho, id) => {
+                  return(
+                    <SizeButton
+                      key={id} 
+                      type="button"
+                      clicked = {clicked}
+                      setClicked = {setClicked}
+                    >
+                      {tamanho}
+                    </SizeButton>
+                  )
+                }
+              )}
+            </div>
+          </div>
           <p>{product.description}</p>
         </div>
       </>
@@ -73,7 +95,7 @@ export default function ProductPage() {
             {`R$ ${totalPrice}`}
           </p>
         </div>
-        <button>Colocar no carrinho</button>
+        <button type="button" onClick={addToCart} >Colocar no carrinho</button>
       </>
     );
   }
@@ -86,6 +108,16 @@ export default function ProductPage() {
 
   function handleReturn() {
     navigate(-1);
+  }
+
+  function addToCart() {
+    if(!user){
+      setHomePage(`/produto/${productId}`);
+      navigate("/login");
+    }
+    else{
+      navigate("/carrinho");
+    }
   }
 
   return(

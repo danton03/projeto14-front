@@ -4,14 +4,20 @@ const ProductPageStyle = createGlobalStyle`
   body{
     background-color: #F8F8F8;
   }
+
+  #root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 500px;
   height: auto;
   margin-top: 52px;
   margin-bottom: 76px;
@@ -19,11 +25,12 @@ const Container = styled.div`
   background-color: var(--cor-branca);
 
   .container-img{
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 8px;
     width: 100%;
+    max-width: 500px;
     height: auto;
 
     img{
@@ -64,6 +71,7 @@ const Container = styled.div`
       justify-content: space-between;
       width: 100%;
       height: auto;
+      margin-top: 5px;
       box-sizing: border-box;
 
       h4{
@@ -106,6 +114,10 @@ const Container = styled.div`
         font-weight: 700;
         color: var(--cor-branca);
       }
+
+      button:hover{
+        cursor: pointer;
+      }
     }
 
     p{
@@ -116,6 +128,37 @@ const Container = styled.div`
       font-weight: 500;
       line-height: 1.3;
       color: var(--cor-verde-escuro);
+    }
+
+    .escolher-tamanho, .tamanho{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+
+      h4{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        margin-bottom: 4px;
+
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        color: #C6C6C6;
+      }
+    }
+
+    .escolher-tamanho{
+      margin-top: 10px;
+      flex-direction: column;
+    }
+
+    .tamanho{
+      gap: 6px;
+      margin-bottom: 4px;
     }
   }
 `;
@@ -198,7 +241,32 @@ const PriceBar = styled.div`
   font-weight: 700;
   color: var(--cor-branca);
   }
+
+  button:hover{
+    cursor: pointer;
+  }
+`;
+
+const SizeBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 28px;
+  height: 28px;
+  background-color: ${(props) => props.color};
+  border: none;
+  border-radius: 5px;
+  
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cor-branca);
+
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
 
-export {Container, ProductPageStyle, PriceBar, ReturnPage}
+export {Container, ProductPageStyle, PriceBar, ReturnPage, SizeBtn}
