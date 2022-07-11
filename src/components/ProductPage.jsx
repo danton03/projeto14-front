@@ -65,7 +65,6 @@ export default function ProductPage() {
   function renderizaPreco() {
     const productPrice = parseFloat(product.price);
     const totalPrice = String((productPrice*counter).toFixed(2)).replace('.',',');
-    console.log(totalPrice);
     return(
       <>
         <div className="total">
