@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import SendContext from "../contexts/SendContext"
 import UserContext from "../contexts/UserContext"
 import Header from "../components/Header"
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 
 export default function Entrega(){
@@ -23,7 +23,7 @@ export default function Entrega(){
     const [complemento, setComplemento] = useState("")
 
     const { setDataSend } = useContext(SendContext);
-    const { user , setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     setTimeout(()=>{if(!user){
         navigate("/")}
@@ -51,7 +51,6 @@ export default function Entrega(){
         console.log(PrazosValores)
 
         setDataSend({body, PrazosValores})
-         
              navigate("/pagamento")
 
        } catch (error) {
