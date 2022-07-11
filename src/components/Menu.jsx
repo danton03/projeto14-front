@@ -21,13 +21,13 @@ export default function Menu() {
   }
 
   function handleToCart() {
-    if (homePage !== 'carrinho') {
+    if (homePage !== '/carrinho') {
       navigate("/carrinho");
     }
   }
 
   function renderizaMenu() {
-    if (homePage === 'home') {
+    if (homePage === '/') {
       return(
         <div className="icones">
           <div className="icone paginaAtual" onClick={handleToHome}>
@@ -48,7 +48,7 @@ export default function Menu() {
       );
     }
 
-    else if(homePage === 'carrinho'){
+    else if(homePage === '/carrinho'){
       return(
         <div className="icones">
           <div className="icone" onClick={handleToHome}>

@@ -25,7 +25,7 @@ export default function Pagamento() {
 
   setTimeout(()=>{if(!user){
     navigate("/")}
-},200)
+  },200)
 
   try{
 

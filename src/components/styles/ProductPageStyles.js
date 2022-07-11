@@ -159,6 +159,7 @@ const Container = styled.div`
     .tamanho{
       gap: 6px;
       margin-bottom: 4px;
+      flex-wrap: wrap;
     }
   }
 `;
