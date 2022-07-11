@@ -3,35 +3,49 @@ import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 // import styled from 'styled-components';
 import { useState, useContext } from 'react';
+import { useNavigate } from "react-router-dom"
 import SendContext from "../contexts/SendContext"
 import axios from 'axios';
 import UserContext from "../contexts/UserContext"
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/Header';
  
-export default function Pagamento() {
 
+export default function Pagamento() {
+  
   const [name, setName] = useState("")
   const [ncard, setNcard] = useState("")
   const [validate, setValidate] = useState("")
   const [securityCode, setSecurityCode] = useState("")
-
+  
+  const navigate = useNavigate()
+  
   const { dataSend } = useContext(SendContext);
   const { user , setUser } = useContext(UserContext);
 
-  let ValorProduto = 50
- let ValorFrete = parseFloat(dataSend.PrazosValores.valorEntregaNormal)
-let Valortotal = ValorFrete+ValorProduto
+  setTimeout(()=>{if(!user){
+    navigate("/")}
+},200)
 
-  async function pagar(e){
+  try{
+
+    let ValorProduto = 50
+    let ValorFrete = parseFloat(dataSend.PrazosValores.valorEntregaNormal)
+    let PrazoEntrega = parseFloat(dataSend.PrazosValores.prazoEntregaNormal)
+    let Valortotal = ValorFrete+ValorProduto
+
+
+
+
+    async function pagar(e){
     e.preventDefault()
-
+    
     const paymentData = {name, ncard, validate, securityCode}
     const body = {paymentData, dataSend}
 
     const config = {
       headers: {
-          "Authorization": `Bearer ${user}` //Padrão da API (Bearer Authentication)
+        "Authorization": `Bearer ${user}` //Padrão da API (Bearer Authentication)
       }
       }
 
@@ -40,7 +54,7 @@ let Valortotal = ValorFrete+ValorProduto
       console.log(body)
       const request = await axios.post('http://localhost:5000/DatasCompra', body, config);
 
-     } catch (error) {
+    } catch (error) {
        alert(error.response.data);
      }
 
@@ -62,6 +76,7 @@ let Valortotal = ValorFrete+ValorProduto
         <div className='flexvalor'> <p>Produto </p> <p>R$ {ValorProduto.toFixed(2)}</p> </div>
         <div className='flexvalor'> <p>Frete </p> <p>R$ {ValorFrete.toFixed(2)}</p> </div>
         <div className='flexvalor'> <h4>Total </h4> <h4>R$ {Valortotal.toFixed(2)}</h4> </div>
+        <div className='flexvalor'> <p>Prazo de entrega </p> <p> {PrazoEntrega} dias </p> </div>
 
       </ResumoCompra>
 
@@ -74,7 +89,7 @@ let Valortotal = ValorFrete+ValorProduto
         <Cards
           cvc={securityCode}
           expiry={validate}
-         
+          
           name={name}
           number={ncard}
           />
@@ -83,13 +98,13 @@ let Valortotal = ValorFrete+ValorProduto
 
       <StyledForm onSubmit={pagar}>
 
-              <input type="number" min="100" max="9999999999999999"  placeholder='Número do cartão' value={ncard} onChange={e=>setNcard(e.target.value)}/>
+              <input type="number" required min="100" max="9999999999999999"  placeholder='Número do cartão' value={ncard} onChange={e=>setNcard(e.target.value)}/>
 
-              <input type="text"  minLength="4" maxLength="26"  placeholder='Nome' value={name} onChange={e=>setName(e.target.value)}/>
+              <input type="text" required minLength="4" maxLength="26"  placeholder='Nome' value={name} onChange={e=>setName(e.target.value)}/>
 
-              <input type="number" min="0101" max="1299" placeholder='Validade' value={validate} onChange={e=>setValidate(e.target.value)}/>
+              <input type="number" min="0101" max="1299" required placeholder='Validade' value={validate} onChange={e=>setValidate(e.target.value)}/>
                   
-              <input type="number" min="100" max="999" placeholder='Código de segurança' value={securityCode} onChange={e=>setSecurityCode(e.target.value)}/>
+              <input type="number" min="100" max="999" required placeholder='Código de segurança' value={securityCode} onChange={e=>setSecurityCode(e.target.value)}/>
 
               <button type='submit'> {"Finalizar compra"}</button>
 
@@ -99,7 +114,12 @@ let Valortotal = ValorFrete+ValorProduto
       </>
           
     )}
-    
+
+    catch{
+      
+      navigate("/")
+    }   
+}
 
   const StyledCart = styled.div`
   

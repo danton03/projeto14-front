@@ -38,7 +38,7 @@ export default function Menu() {
             <img src={cart} alt="ícone carrinho" />
           </div>
 
-          {user.length ?
+          {user ?
             <div className="icone">
               <img src={logout} alt="ícone logout/login" />
             </div>
@@ -59,7 +59,7 @@ export default function Menu() {
             <img src={cartAzul} alt="ícone carrinho" />
           </div>
 
-          {user.length ?
+          {user ?
             <div className="icone">
               <img src={logout} alt="ícone logout/login" />
             </div>
@@ -80,7 +80,7 @@ export default function Menu() {
             <img src={cart} alt="ícone carrinho" />
           </div>
 
-          {user.length ?
+          {user ?
             <div className="icone">
               <img src={logout} alt="ícone logout/login" />
             </div>

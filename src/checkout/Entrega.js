@@ -22,8 +22,13 @@ export default function Entrega(){
     const [numero, setNumero] = useState("")
     const [complemento, setComplemento] = useState("")
 
-    const { dataSend, setDataSend } = useContext(SendContext);
+    const { setDataSend } = useContext(SendContext);
     const { user , setUser } = useContext(UserContext);
+
+    setTimeout(()=>{if(!user){
+        navigate("/")}
+    },200)
+   
 
       
     
@@ -70,22 +75,22 @@ export default function Entrega(){
 
             <div className="divflexCep">
                 
-            <input placeholder="CEP*" type="text"  value={cep} onChange={e=>setCep(e.target.value)}/>
+            <input placeholder="CEP*" type="text" required  value={cep} onChange={e=>setCep(e.target.value)}/>
 
             <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank"> Não sei meu 
             CEP</a>
             </div>
 
-            <input placeholder="Estado*" type="text"  value={estado} onChange={e=>setEstado(e.target.value)}/>
-            <input placeholder="Cidade*" type="text"  value={cidade} onChange={e=>setCidade(e.target.value)}/>
+            <input placeholder="Estado*" type="text"  required value={estado} onChange={e=>setEstado(e.target.value)}/>
+            <input placeholder="Cidade*" type="text" required  value={cidade} onChange={e=>setCidade(e.target.value)}/>
 
-            <input placeholder="Rua*" type="text"  value={rua} onChange={e=>setRua(e.target.value)}/>
-            <input placeholder="Bairro*" type="text"  value={bairro} onChange={e=>setBairro(e.target.value)}/>
+            <input placeholder="Rua*" type="text" required  value={rua} onChange={e=>setRua(e.target.value)}/>
+            <input placeholder="Bairro*" type="text" required  value={bairro} onChange={e=>setBairro(e.target.value)}/>
 
             <div className="divflex">
 
-            <input placeholder="Numero*" type="text"  value={numero} onChange={e=>setNumero(e.target.value)}/>
-            <input placeholder="Complemento" type="text"  value={complemento} onChange={e=>setComplemento(e.target.value)}/>
+            <input placeholder="Numero*" type="number" required value={numero} onChange={e=>setNumero(e.target.value)}/>
+            <input placeholder="Complemento*" type="text" required  value={complemento} onChange={e=>setComplemento(e.target.value)}/>
             </div>
 
             <button type="submit"> Confirmar endereco </button>
