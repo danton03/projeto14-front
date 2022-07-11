@@ -15,13 +15,15 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  const [homePage , setHomePage] = useState('');
+  const [homePage , setHomePage] = useState('/');
   const [user , setUser] = useState();
-  const [dataSend, setDataSend] = useState({})
-  const [dataPurchase, setDataPurchase] = useState({})
 
+  const [dataSend, setDataSend] = useState({});
+  const [cart, setCart] = useState([]);
+  const [dataPurchase, setDataPurchase] = useState({})
+  
   return (
-    <UserContext.Provider value={{user , setUser}} >
+    <UserContext.Provider value={{user , setUser, cart, setCart}} >
       <MenuContext.Provider value={{homePage , setHomePage}}>
         <SendContext.Provider value={{dataSend, setDataSend, dataPurchase, setDataPurchase}}>
           <BrowserRouter>

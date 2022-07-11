@@ -122,10 +122,24 @@ export default function ProductPage() {
     }
 
     else{
-      //Falta criar a rota no back-end para adicionar ao carrinho. E adicionar a rota aqui
-      /* const promise = axios.post(`http://localhost:5000/`);
+      const genre = product.details.genre[0].toUpperCase()+product.details.genre.slice(1);
+      const config = {
+        headers: {
+          "Authorization": `Bearer ${user}` //Padrão da API (Bearer Authentication)
+        }
+      }
+      const body = {
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        size: clicked,
+        amount: counter,
+        genre
+      }
+
+      const promise = axios.post(`http://localhost:5000/cart`,body, config);
       promise.then((res) => {
-        setProduct(res.data);
+        console.log(res.data);
       });
       promise.catch((err)=>{
         console.log(err);
@@ -151,7 +165,7 @@ export default function ProductPage() {
           }
         }
       );
-      */
+     
       navigate("/carrinho");
     }
   }

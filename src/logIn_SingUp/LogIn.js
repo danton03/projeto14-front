@@ -3,49 +3,74 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../contexts/UserContext.js";
-
-export default function LogIn(){
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-    const { setUser } = useContext(UserContext);
-
-    let navigate = useNavigate()
-
-    async function logar(event){
-        event.preventDefault();
-        const body = {email, password};
-        console.log(body)
-        try {
-         const request = await axios.post('http://localhost:5000/login', body);
-         
-         const token = request.data
-         
-         setUser(token)
-       
-          
-              navigate("/entrega")
-
-        } catch (error) {
-          alert(error.response.data);
-        }
-      }
+import MenuContext from "../contexts/MenuContext";
+import { toast } from "react-toastify";
 
 
-    return(
+export default function LogIn() {
 
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { homePage } = useContext(MenuContext);
+  const { user, setUser } = useContext(UserContext);
+
+  let navigate = useNavigate()
+
+function logar(event) {
+    event.preventDefault();
+    const body = { email, password };
+    console.log(body)
     
-        <FormsLogInSingUp 
-        logar={logar}
-        TextButton={"Entrar"}
-        email={email} setEmail={setEmail}
-        password={password} setPassword={setPassword}
-        text={"Primeira vez? Cadastre-se!"} 
-        linkTo={"/singup"}
+      const request = axios.post('http://localhost:5000/login', body);
+      request.then((res)=>{
+        const token = res.data
+  
+        setUser(token);
+  
+  
+        navigate(homePage);
+      })
 
-        />
+      toast.promise(
+        request,
+        {
+          pending: 'Carregando...',
+          success: 'Login realizado com sucesso!',
+          error: {
+            render({ data }) {
+              const code = data.response.status;
+              if (code === 401 || code === 422) {
+                const message = data.response.data;
+                return message;
+              }
+              else {
+                return "Ops, tivemos uma falha interna";
+              }
+            }
+          }
+        }
+      );
+    request.catch(
+      (error) => {
+        console.log(error.response.data);
+      }  
+    ) 
+}
 
-    )
+
+  return (
+
+
+    <FormsLogInSingUp
+      logar={logar}
+      TextButton={"Entrar"}
+      email={email} setEmail={setEmail}
+      password={password} setPassword={setPassword}
+      text={"Primeira vez? Cadastre-se!"}
+      linkTo={"/singup"}
+
+    />
+
+  )
 }
 

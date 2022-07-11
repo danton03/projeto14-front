@@ -12,7 +12,7 @@ export default function HomePage() {
   const navigate = useNavigate();
   
   useEffect(() => {
-    setHomePage('home');
+    setHomePage('/');
     const promise = axios.get("http://localhost:5000/products");
     promise.then((res) => {
       setProducts(res.data);
